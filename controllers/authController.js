@@ -16,67 +16,6 @@ const transporter = nodemailer.createTransport({
 });
 
 
-// module.exports.postLogin = (req, res, next) => {
-//     // res.send('new login')
-//     const email = req.body.email;
-//     const password = req.body.password;
-//     let loadedUser;
-//     User.findOne({ email})
-//         .then((user) => {
-//             if (!user) {
-//                 const error = new Error(
-//                     "A user with this email could not been found."
-//                 );
-//                 error.status = 401;
-//                 throw error;
-//             }
-//             loadedUser = user;
-//             return bcrypt.compare(password, user.password);
-//         })
-//         .then((isEqual) => {
-//             if (!isEqual) {
-//                 const error = new Error("Wrong Password");
-//                 error.statusCode = 401;
-//                 throw error;
-//             }
-//             const token = jwt.sign({
-//                 email: loadedUser.email,
-//                 userId: loadedUser._id.toString(),
-//             }, 'somesupersecretsecret', {expiresIn: '1h'});
-//             res.status(200).json({token: token, userId: loadedUser._id.toString()})
-//         })
-//         .catch((err) => {
-//             if (!err.statusCode) {
-//                 err.statusCode = 500;
-//             }
-//             next(err);
-//         });
-//     // if (!user) {
-//     //     req.flash("error", "Invalid email or password.");
-//     //     return res.redirect("/login");
-//     // }
-//     // bcrypt
-//     //     .compare(password, user.password)
-//     //     .then((doMatch) => {
-//     //         if (doMatch) {
-//     //             req.session.isLoggedIn = true;
-//     //             req.session.user = user;
-//     //             return req.session.save((err) => {
-//     //                 console.log(err);
-//     //                 return res.redirect("/");
-//     //             });
-//     //         }
-//     //         req.flash("error", "Invalid email or password.");
-//     //         res.redirect("login");
-//     //     })
-//     //     .catch((err) => {
-//     //         console.log(err);
-//     //         res.redirect("/login");
-//     //     });
-// };
-
-
-
 module.exports.postSignup = async (req, res, next) => {
   try {
     const errors = validationResult(req);
