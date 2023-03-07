@@ -4,7 +4,7 @@ const User = require("../models/user");
 const authController = require('../controllers/authController')
 // const router = express.Router();
 const {Router} = require('express');
-const router = Router();
+const router = Router(); 
 
 
 router.post('/signup', [
