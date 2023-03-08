@@ -1,16 +1,19 @@
 const express = require("express");
+const path = require('path');
 const userRoute = require("./routes/authRoute");
 const authRoute = require("./routes/authRoute");
-const applicationRoute = require('./routes/applicationRoute')
+const jobRoute = require('./routes/jobRoute')
 const mongoose = require("mongoose");
 const User = require("./models/user");
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const multer = require('multer');
 
 const app = express();
 app.use(bodyParser.json()); //application/json
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use((req, res, next)=>{
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,7 +25,7 @@ app.use((req, res, next)=>{
 app.use(express.json());
 app.use("/api/v1/auth", userRoute);
 app.use("/api/v1/auth", authRoute);
-app.use("/api/v1/auth", applicationRoute);
+app.use("/api/v1/auth", jobRoute);
 
 
 app.use((error, req, res, next)=>{
