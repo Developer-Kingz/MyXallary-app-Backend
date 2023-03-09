@@ -1,4 +1,6 @@
 const Job = require('../models/job');
+const { validationResult } = require("express-validator");
+const multer = require("multer");
 
 exports.getJobs = (req, res, next) => {
     Job.find().then(jobs=>{
@@ -13,6 +15,13 @@ exports.getJobs = (req, res, next) => {
 }
 
 exports.postJob = (req, res, next) => {
+    //const errors = validationResult(req);
+    if(!req.file){
+        const error = new Error('No Image Provided')
+        error.statusCode = 422;
+        throw error
+    }
+    const imageUrl = req.file.filename
     const company = req.body.company;
     const level = req.body.level;
     const country = req.body.country;
@@ -21,6 +30,7 @@ exports.postJob = (req, res, next) => {
     const date = req.body.date;
     //create application in database
     const job = new Job({
+        imageUrl: imageUrl, 
         company: company,
         level: level,
         country: country,

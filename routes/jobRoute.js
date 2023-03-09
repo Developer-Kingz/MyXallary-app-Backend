@@ -4,6 +4,7 @@ const Job = require('../models/job')
 const jobController = require('../controllers/jobController');
 // const router = express.Router();
 const {Router} = require('express');
+const multer = require("multer");
 const router = Router(); 
 
 //GET Applications

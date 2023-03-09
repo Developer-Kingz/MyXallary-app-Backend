@@ -4,27 +4,27 @@ const Schema = mongoose.Schema;
 const jobSchema = new Schema({
     company: {
         type: String,
-        required: true
+        // required: true
     },
-    // imageUrl: {
-    //     type: String,
-    //     required: true,
-    // },
+    imageUrl: {
+        type: String,
+        // required: true,
+    },
     level: {
         type: String,
-        required: true,
+        //required: true,
     },
     country: {
         type: String,
-        required: true,
+        // required: true,
     },
     salary: {
         type: Number,
-        required: true,
+        // required: true,
     },
     tags: [ {
         type: String,
-        required: true,
+        // required: true,
     }
 ],
     date: {
@@ -34,4 +34,4 @@ const jobSchema = new Schema({
 { timestamps: true }
 );
 
-module.exports = mongoose.model('job', jobSchema);
+module.exports = mongoose.model('Job', jobSchema);
