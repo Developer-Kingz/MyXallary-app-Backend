@@ -7,13 +7,13 @@ const {Router} = require('express');
 const multer = require("multer");
 const router = Router(); 
 
-//GET Applications
+//GET JOBS
 router.get('/jobs', jobController.getJobs);
 
-//POST Applications
+//POST JOB
 router.post('/job', jobController.postJob);
 
-//individuak post
+//individual post
 router.get('job/:jobId', jobController.getSingleJobs)
 
 module.exports = router;

@@ -5,6 +5,7 @@ const path = require("path");
 const userRoute = require("./routes/authRoute");
 const authRoute = require("./routes/authRoute");
 const jobRoute = require("./routes/jobRoute");
+const appliedRoute = require("./routes/appliedRoute");
 const mongoose = require("mongoose");
 const User = require("./models/user");
 const session = require("express-session");
@@ -38,6 +39,7 @@ app.use(express.json());
 app.use("/api/v1/auth", userRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/auth", jobRoute);
+app.use("/api/v1/auth", appliedRoute);
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
